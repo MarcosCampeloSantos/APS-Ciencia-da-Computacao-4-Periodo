@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package APS;
+package APS.VIEWS;
 
 /**
  *
  * @author marco
  */
 public class MenuInicial extends javax.swing.JFrame {
-    
+    Algoritmos Algoritmos = new Algoritmos();
     ListaBanco ListaBanco = new ListaBanco();
     /**
      * Creates new form MenuInicial
@@ -30,22 +30,27 @@ public class MenuInicial extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        BancoDados = new javax.swing.JButton();
-        Algoritmos = new javax.swing.JButton();
+        BancoDadosButton = new javax.swing.JButton();
+        AlgoritmosButton = new javax.swing.JButton();
         MenuFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Painel"));
 
-        BancoDados.setText("Banco de Dados");
-        BancoDados.addActionListener(new java.awt.event.ActionListener() {
+        BancoDadosButton.setText("Banco de Dados");
+        BancoDadosButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BancoDadosActionPerformed(evt);
+                BancoDadosButtonActionPerformed(evt);
             }
         });
 
-        Algoritmos.setText("Algoritmos Ordenação");
+        AlgoritmosButton.setText("Algoritmos Ordenação");
+        AlgoritmosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AlgoritmosButtonActionPerformed(evt);
+            }
+        });
 
         MenuFechar.setText("Fechar");
         MenuFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -58,26 +63,27 @@ public class MenuInicial extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(MenuFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(86, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Algoritmos, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(BancoDados)
-                        .addGap(17, 17, 17)))
-                .addGap(77, 77, 77))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AlgoritmosButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(BancoDadosButton)
+                                .addGap(17, 17, 17)))
+                        .addGap(77, 77, 77))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(MenuFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(BancoDados)
+                .addComponent(BancoDadosButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Algoritmos)
+                .addComponent(AlgoritmosButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(MenuFechar)
                 .addGap(40, 40, 40))
@@ -107,12 +113,19 @@ public class MenuInicial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MenuFecharActionPerformed
 
-    private void BancoDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BancoDadosActionPerformed
+    private void BancoDadosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BancoDadosButtonActionPerformed
         ListaBanco.setVisible(true);
         ListaBanco.setLocationRelativeTo(null);
         ListaBanco.setResizable(false);
         dispose();
-    }//GEN-LAST:event_BancoDadosActionPerformed
+    }//GEN-LAST:event_BancoDadosButtonActionPerformed
+
+    private void AlgoritmosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlgoritmosButtonActionPerformed
+        Algoritmos.setVisible(true);
+        Algoritmos.setLocationRelativeTo(null);
+        Algoritmos.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_AlgoritmosButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,8 +163,8 @@ public class MenuInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Algoritmos;
-    private javax.swing.JButton BancoDados;
+    private javax.swing.JButton AlgoritmosButton;
+    private javax.swing.JButton BancoDadosButton;
     private javax.swing.JButton MenuFechar;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
