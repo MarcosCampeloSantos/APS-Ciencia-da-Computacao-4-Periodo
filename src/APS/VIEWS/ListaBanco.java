@@ -5,12 +5,13 @@
  */
 package APS.VIEWS;
 
+import APS.MODEL.Banco;
 /**
  *
  * @author marco
  */
 public class ListaBanco extends javax.swing.JFrame {
-    
+    Banco Banco = new Banco();
     /**
      * Creates new form ListaBanco
      */
@@ -39,6 +40,11 @@ public class ListaBanco extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Banco de Dados"));
 
         jButton1.setText("Inserir Imagem");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Voltar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +141,10 @@ public class ListaBanco extends javax.swing.JFrame {
         MenuInicial.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Banco.create("Apenas Um Teste de Envio de Dados");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
