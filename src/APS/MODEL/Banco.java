@@ -8,7 +8,9 @@ package APS.MODEL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,45 +20,41 @@ import java.util.logging.Logger;
  */
 public class Banco {
 
-    private final String DRIVER = "com.mysql.jdbc.Driver";
-    private final String URL = "jdbc:mysql://localhost:3306/aps";
-    private final String USER = "root";
-    private final String PASSWORD = "";
+    private String SERVER = "jdbc:mysql://localhost:3306/aps";
+    private String USER = "root";
+    private String PASS = "";
     
-    private Connection getConnection(){
+    private Connection connection = null;
+    private Statement statement = null;
+    private ResultSet resultset = null;
+    
+    private void openConection(){
         try {
-            Class.forName(DRIVER);
-            return DriverManager.getConnection(URL, USER, PASSWORD);
-            
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new RuntimeException("Erro na Conexão", ex);
+            this.connection = (Connection)DriverManager.getConnection(SERVER, USER, PASS);
+            this.statement = this.connection.createStatement();
+        } catch (Exception e) {
+            System.out.println("Erro "+e.getMessage());
         }
     }
     
     private void closeConnection(PreparedStatement con){
-        try {
-            if(con != null){
-                con.close();
+        if(this.connection != null) {
+            try {
+                this.connection.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro para deslogar "+ex.getMessage());
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            this.connection = null;
         }
     }
     
     public void create(String dado){
-        
-        PreparedStatement stmt = null;
-        
+        String query = "INSERT INTO imagens ('NOME') VALUES ('Apenas Um Teste')";
         try {
-            stmt = getConnection().prepareStatement("INSERT INTO imagens (NOME) VALUES (?)");
-            stmt.setString(1, dado);
-            
-            stmt.executeUpdate();
+            this.openConection();
+            this.statement.executeUpdate(query);
         } catch (SQLException ex) {
-            Logger.getLogger(Banco.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-            closeConnection(stmt);
+            System.out.println("Erro para na Query "+ex.getMessage());
         }
-        
     }
 }
