@@ -6,6 +6,8 @@
 package APS.VIEWS;
 
 import APS.MODEL.Banco;
+import javafx.stage.FileChooser;
+import javax.swing.JFileChooser;
 /**
  *
  * @author marco
@@ -28,6 +30,7 @@ public class ListaBanco extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFileChooser1 = new javax.swing.JFileChooser();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -143,7 +146,9 @@ public class ListaBanco extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Banco.create("Apenas Um Teste de Envio de Dados");
+        //Banco.create("Apenas Um Teste de Envio de Dados");
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.showOpenDialog(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -184,6 +189,7 @@ public class ListaBanco extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
