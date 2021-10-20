@@ -7,12 +7,9 @@ package APS.MODEL;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -37,24 +34,29 @@ public class Banco {
         }
     }
     
-    private void closeConnection(PreparedStatement con){
+    private void closeConnection(){
         if(this.connection != null) {
             try {
                 this.connection.close();
+                this.statement.close();
             } catch (SQLException ex) {
                 System.out.println("Erro para deslogar "+ex.getMessage());
+            }finally{
+                this.connection = null;
+                this.statement = null;
             }
-            this.connection = null;
         }
     }
     
     public void create(String dado){
-        String query = "INSERT INTO imagens ('NOME') VALUES ('Apenas Um Teste')";
+        String query = "INSERT INTO aps.imagens (NOME) VALUES ('Apenas Um Teste')";
+        this.openConection();
         try {
-            this.openConection();
             this.statement.executeUpdate(query);
         } catch (SQLException ex) {
-            System.out.println("Erro para na Query "+ex.getMessage());
+            System.out.println("Erro na Query "+ex.getMessage());
+        }finally{
+            this.closeConnection();
         }
     }
 }
