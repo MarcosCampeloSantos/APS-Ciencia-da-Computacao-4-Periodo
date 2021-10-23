@@ -6,7 +6,7 @@
 package APS.VIEWS;
 
 import APS.MODEL.Banco;
-import javafx.stage.FileChooser;
+import java.io.File;
 import javax.swing.JFileChooser;
 /**
  *
@@ -148,7 +148,13 @@ public class ListaBanco extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Banco.create("Apenas Um Teste de Envio de Dados");
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.showOpenDialog(this);
+        fileChooser.setDialogTitle("Procurar Imagens");
+        int fileretorno = fileChooser.showOpenDialog(this);
+        
+        if(fileretorno == JFileChooser.APPROVE_OPTION){
+            File file = fileChooser.getSelectedFile();
+            
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

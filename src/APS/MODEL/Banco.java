@@ -5,6 +5,7 @@
  */
 package APS.MODEL;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -48,13 +49,14 @@ public class Banco {
         }
     }
     
-    public void create(String dado){
-        String query = "INSERT INTO aps.imagens (NOME) VALUES ('Apenas Um Teste')";
+    public void create(File dado){
+        String query = "INSERT INTO aps.imagens (IMAGEM) VALUES ("+dado+")";
         this.openConection();
         try {
             this.statement.executeUpdate(query);
+            System.out.println("Aquivo Gravado com sucesso!");
         } catch (SQLException ex) {
-            System.out.println("Erro na Query "+ex.getMessage());
+            System.out.println("Erro na Query"+ex.getMessage());
         }finally{
             this.closeConnection();
         }
