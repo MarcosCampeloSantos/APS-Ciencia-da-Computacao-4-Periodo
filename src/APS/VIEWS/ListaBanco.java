@@ -178,6 +178,7 @@ public class ListaBanco extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         fileChooser.setDialogTitle("Procurar Imagens");
+        DefaultTableModel dm = (DefaultTableModel)jTable1.getModel();
         
         fileChooser.setMultiSelectionEnabled(true);
         fileChooser.showOpenDialog(this);
@@ -185,6 +186,10 @@ public class ListaBanco extends javax.swing.JFrame {
         file = fileChooser.getSelectedFiles();
         
         Imagem.sendImagem(file);
+        while(dm.getRowCount() > 0)
+        {
+            dm.removeRow(0);
+        }
         preencherDados();
     }//GEN-LAST:event_jButton1ActionPerformed
 

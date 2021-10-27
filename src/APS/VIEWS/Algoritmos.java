@@ -38,6 +38,11 @@ public class Algoritmos extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Algoritmos"));
 
         jButton1.setText("Bubble Sort");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Insert Sort");
 
@@ -108,6 +113,14 @@ public class Algoritmos extends javax.swing.JFrame {
         MenuInicial.setLocationRelativeTo(null);
         dispose();
     }//GEN-LAST:event_VoltarButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        BubbleSort Bubble = new BubbleSort();
+        Bubble.setVisible(true);
+        Bubble.setResizable(false);
+        Bubble.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
